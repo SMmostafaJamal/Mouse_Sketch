@@ -1,0 +1,25 @@
+#container {
+    /* display: flex; */
+    /* justify-content: center; */
+}
+#box{
+    margin: auto;
+    display: flex;
+    height: 40%;
+    max-width: 40%;
+    border: 1px solid black;
+    
+}
+.sibling {
+    height: 100%;
+    width: 100%;
+    /* border: 1px solid black; */
+
+}
+.square {
+    /* float: left; */
+    min-height: 25px;
+    width: 100%;
+    border: 1px solid white;
+    background-color: black;
+}
