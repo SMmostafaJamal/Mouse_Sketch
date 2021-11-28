@@ -5,8 +5,8 @@
 #box{
     margin: auto;
     display: flex;
-    height: 40%;
-    max-width: 40%;
+    height: 35%;
+    max-width: 35%;
     border: 1px solid black;
     
 }
@@ -17,9 +17,11 @@
 
 }
 .square {
-    /* float: left; */
-    min-height: 25px;
-    width: 100%;
+    padding: 40%;
     border: 1px solid white;
     background-color: black;
 }
+/* .square:hover {
+    background-color: white;
+    color: white;
+} */
