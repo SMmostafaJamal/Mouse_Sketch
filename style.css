@@ -7,7 +7,7 @@
     display: flex;
     height: 35%;
     max-width: 35%;
-    border: 1px solid black;
+    border: 5px solid blue;
     
 }
 .sibling {
@@ -17,9 +17,13 @@
 
 }
 .square {
-    padding: 40%;
-    border: 1px solid white;
-    background-color: black;
+    padding: 50%;
+    background-color: white;
+}
+.clear {
+    /* padding: 40%; */
+    /* border: 1px solid white; */
+    background-color: white;
 }
 /* .square:hover {
     background-color: white;
