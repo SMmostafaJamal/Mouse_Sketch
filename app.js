@@ -6,22 +6,33 @@ const output = document.querySelector('#displayRange')
 const eraser = document.getElementById('eraser')
 const randomColorBtn = document.getElementById('randomColor')
 
+
+
 selectingValue(range.defaultValue)
 
-range.addEventListener('change', function(){
-    grid.innerHTML = ''  // to clean previous inner grids
-    selectingValue(range.value)
-})
+
 
 // creating div/grids/pixels, clearing color and making color trails
 function createGridFunc(val){
     for(i=0; i < val; i++){
+        r = Math.floor(Math.random() * 256)
+        g = Math.floor(Math.random() * 256)
+        b = Math.floor(Math.random() * 256)
+        const RGB = `rgb(${r},${g},${b})`
         const div = document.createElement('div')
         grid.insertAdjacentElement('afterbegin', div)
         div.classList.add('square')
-        color_erase_trail(div)
-        clean(div,range)
-        clean(div,cleanBtn)    
+        
+        // To change the div/pixel colours-
+        combine_of_clrTrail_eraser_randomClr(grid, div, color.value)
+        // To erase colour trails-
+        combine_of_clrTrail_eraser_randomClr(eraser, div, 'white')
+        // random colours-
+        combine_of_clrTrail_eraser_randomClr(randomColorBtn, div, RGB)
+
+        // color_erase_trail(div)
+        clean(range,div)
+        clean(cleanBtn,div)  
     }
 
 }
@@ -35,17 +46,42 @@ function selectingValue(rangeVal){
     displayRange = rangeVal * rangeVal
     createGridFunc(displayRange)
 }
+range.addEventListener('change', function(){
+    grid.innerHTML = ''  // to clean previous inner grids
+    selectingValue(range.value)
+})
+// combine of the div/pixel colour change, to erase the colour trails and random colour 
+function combine_of_clrTrail_eraser_randomClr(outerElement, innerElement,variable){
+    outerElement.addEventListener('click',function(){
+        innerElement.addEventListener('mouseover', function handler(e){
+           this.style.backgroundColor = variable
+           e.currentTarget.removeEventListener(e.type, handler); // this cell will run only once
 
-// to choose color
+        })
+    })
+}
+
+// to clear grid screen 
+function clean(eventElement, clnCell){
+    eventElement.addEventListener('click', function(){
+        clnCell.style.backgroundColor = 'white'      
+    })
+}
+
+/*
+to choose color
 function color_erase_trail(clr){
-    // To change the div/pixel colours
+    // To change the div/pixel colours-
+    combine_of_clrTrail_eraser_randomClr(grid, clr, color.value)
     grid.addEventListener('click', function(){
         clr.addEventListener('mouseover', function handler(e){
             this.style.backgroundColor = color.value 
             e.currentTarget.removeEventListener(e.type, handler); // this cell will run only once
         })
     })
-    // To erase colour trails 
+
+    // To erase colour trails-
+    combine_of_clrTrail_eraser_randomClr(eraser,clr,'white')
     eraser.addEventListener('click', function(){
         clr.addEventListener('mouseover', function handler(e){
             this.style.backgroundColor = 'white'
@@ -53,27 +89,19 @@ function color_erase_trail(clr){
         })
     })
 
-    // random colours
-    randomColorBtn.addEventListener('click', function randomColor(){
-        r = Math.floor(Math.random() * 256)
-        g = Math.floor(Math.random() * 256)
-        b = Math.floor(Math.random() * 256)
-        const RGB = `rgb(${r},${g},${b})`
+    // random colours-
+    combine_of_clrTrail_eraser_randomClr(randomColorBtn,clr,RGB)
+
+    randomColorBtn.addEventListener('click', function(){
         clr.addEventListener('mouseover', function handler(e){
-            clr.style.backgroundColor = RGB
+            this.style.backgroundColor = RGB
             e.currentTarget.removeEventListener(e.type, handler); // this cell will run only once
         })
 
     })
 
-}
+} */
 
-// to clear grid screen 
-function clean(clnCell, eventElement){
-    eventElement.addEventListener('click', function(){
-        clnCell.style.backgroundColor = 'white'      
-    })
-}
 
 
 
