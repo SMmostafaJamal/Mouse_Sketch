@@ -11,7 +11,6 @@ const randomColorBtn = document.getElementById('randomColor')
 selectingValue(range.defaultValue)
 
 
-
 // creating div/grids/pixels, clearing color and making color trails
 function createGridFunc(val){
     for(i=0; i < val; i++){
@@ -19,20 +18,26 @@ function createGridFunc(val){
         g = Math.floor(Math.random() * 256)
         b = Math.floor(Math.random() * 256)
         const RGB = `rgb(${r},${g},${b})`
+        
         const div = document.createElement('div')
         grid.insertAdjacentElement('afterbegin', div)
         div.classList.add('square')
         
+
         // To change the div/pixel colours-
-        combine_of_clrTrail_eraser_randomClr(grid, div, color.value)
+        combine_of_clrTrail_eraser_randomClr(grid, div, color)
         // To erase colour trails-
         combine_of_clrTrail_eraser_randomClr(eraser, div, 'white')
         // random colours-
         combine_of_clrTrail_eraser_randomClr(randomColorBtn, div, RGB)
+        // for range 
+        combine_of_clrTrail_eraser_randomClr(range, div, 'white')
+        // to clean grid
+        combine_of_clrTrail_eraser_randomClr(cleanBtn, div, 'white')
 
         // color_erase_trail(div)
-        clean(range,div)
-        clean(cleanBtn,div)  
+        // clean(range,div)
+        // clean(cleanBtn,div)  
     }
 
 }
@@ -46,6 +51,7 @@ function selectingValue(rangeVal){
     displayRange = rangeVal * rangeVal
     createGridFunc(displayRange)
 }
+// for slider 
 range.addEventListener('change', function(){
     grid.innerHTML = ''  // to clean previous inner grids
     selectingValue(range.value)
@@ -53,14 +59,21 @@ range.addEventListener('change', function(){
 // combine of the div/pixel colour change, to erase the colour trails and random colour 
 function combine_of_clrTrail_eraser_randomClr(outerElement, innerElement,variable){
     outerElement.addEventListener('click',function(){
-        innerElement.addEventListener('mouseover', function handler(e){
-           this.style.backgroundColor = variable
-           e.currentTarget.removeEventListener(e.type, handler); // this cell will run only once
-
-        })
+        if(outerElement !== cleanBtn){
+            innerElement.addEventListener('mouseover', function handler(e){
+                (variable === color) ? this.style.backgroundColor = variable.value: this.style.backgroundColor = variable
+             
+                e.currentTarget.removeEventListener(e.type, handler); // this cell will run only once
+            })
+        }else {
+            innerElement.style.backgroundColor = variable
+        }
     })
 }
 
+
+
+/*
 // to clear grid screen 
 function clean(eventElement, clnCell){
     eventElement.addEventListener('click', function(){
@@ -68,7 +81,6 @@ function clean(eventElement, clnCell){
     })
 }
 
-/*
 to choose color
 function color_erase_trail(clr){
     // To change the div/pixel colours-
