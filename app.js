@@ -8,38 +8,28 @@ const eraser = document.getElementById('eraser')
 
 
 
-startingValue(range.defaultValue)
+selectingValue(range.defaultValue)
 range.addEventListener('change', function(){
     grid.innerHTML = ''  // to clean previous inner grids
-    startingValue(range.value)
-
+    selectingValue(range.value)
 })
 
 
-// creating grids, clearing color and making color trails
+// creating div/grids/pixels, clearing color and making color trails
 function createGridFunc(val){
     for(i=0; i < val; i++){
         const div = document.createElement('div')
         grid.insertAdjacentElement('afterbegin', div)
         div.classList.add('square')
-        colorTrail(div)
+        color_erase_trail(div)
         clean(div,range)
-        clean(div,cleanBtn)
-
-        eraser.addEventListener('click', function eraserHandler(ev){
-            div.addEventListener('mouseover', function handler(e){
-                this.style.backgroundColor = 'white'
-                e.currentTarget.removeEventListener(e.type, handler);
-            })
-        })
-
-        
+        clean(div,cleanBtn)    
     }
 
 }
 
 // for defaultValue and selected values
-function startingValue(rangeVal){
+function selectingValue(rangeVal){
     output.innerHTML = rangeVal
     // equal column and row 
     grid.style.gridTemplateRows = `repeat(${rangeVal}, 1fr)`
@@ -49,16 +39,25 @@ function startingValue(rangeVal){
 }
 
 // to choose color
-function colorTrail(clr){
+function color_erase_trail(clr){
+    // To change the div/pixel colours
     grid.addEventListener('click', function gridH(ev){
         clr.addEventListener('mouseover', function handler(e){
-        this.style.backgroundColor = color.value 
-        e.currentTarget.removeEventListener(e.type, handler); // this cell will run only once,/ until changing another event
+            this.style.backgroundColor = color.value 
+            e.currentTarget.removeEventListener(e.type, handler); // this cell will run only once
         })
     })
+    // To erase colour trails 
+    eraser.addEventListener('click', function eraserHandler(ev){
+        clr.addEventListener('mouseover', function handler(e){
+            this.style.backgroundColor = 'white'
+            e.currentTarget.removeEventListener(e.type, handler);
+        })
+    })
+
 }
 
-// to clear screen 
+// to clear grid screen 
 function clean(clnCell, eventElement){
     eventElement.addEventListener('click', function(){
         clnCell.style.backgroundColor = 'white'      
