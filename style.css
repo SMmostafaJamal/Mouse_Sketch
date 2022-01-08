@@ -20,4 +20,5 @@
 
 .erase {
     background-color: white;
+    background-color: rgb(red, green, blue);
 }
