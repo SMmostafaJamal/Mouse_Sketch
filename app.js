@@ -3,11 +3,7 @@ const color = document.querySelector('#color');
 const cleanBtn = document.querySelector('#clean');
 const range = document.querySelector('#rangeValue')
 const output = document.querySelector('#displayRange')
-// console.log(range.defaultValue)
-
-
-
-
+const eraser = document.getElementById('eraser')
 
 
 
@@ -19,6 +15,7 @@ range.addEventListener('change', function(){
 
 })
 
+
 // creating grids, clearing color and making color trails
 function createGridFunc(val){
     for(i=0; i < val; i++){
@@ -28,6 +25,14 @@ function createGridFunc(val){
         colorTrail(div)
         clean(div,range)
         clean(div,cleanBtn)
+
+        eraser.addEventListener('click', function eraserHandler(ev){
+            div.addEventListener('mouseover', function handler(e){
+                this.style.backgroundColor = 'white'
+                e.currentTarget.removeEventListener(e.type, handler);
+            })
+        })
+
         
     }
 
@@ -45,8 +50,11 @@ function startingValue(rangeVal){
 
 // to choose color
 function colorTrail(clr){
-    clr.addEventListener('mouseover', function(e){
-        this.style.backgroundColor = color.value
+    grid.addEventListener('click', function gridH(ev){
+        clr.addEventListener('mouseover', function handler(e){
+        this.style.backgroundColor = color.value 
+        e.currentTarget.removeEventListener(e.type, handler); // this cell will run only once,/ until changing another event
+        })
     })
 }
 
