@@ -1,24 +1,55 @@
+body{
+    text-align: center;
+}
 #container {
-  
+ 
 }
 #grid{
     margin: auto;
     display: grid;
-    height: 450px;
-    max-width: 450px;
+    height: 650px;
+    max-width: 60vw;
     border: 5px solid #0000ff;
 }
 
 .square{
     height: 100%;
     width: 100%;
-    /* padding: 6px; */
-    /* border: 1px solid green; */
-    /* background-color: white; */
+
+}
+#rangeValue{
+    width: 60vw;
+    margin-top: 30px;
 }
 
+#color, #color_lable{
+    /* clear:both; */
+    /* float: right; */
 
-.erase {
-    background-color: white;
-    background-color: rgb(red, green, blue);
+    position: absolute;
+    /* margin-right:2%; */
+    margin-top: 13%;
+    margin-left: 33%;
+    /* padding: %; */
+    width: 15%;
+    height: 200px;
+}
+#color_lable{
+    margin-top: 20%;
+
+}
+#randomColor, #eraser {
+    display:grid;
+    position: absolute;
+    /* float: left; */
+    margin-top: 20%;
+    /* margin-right: 20%;  */
+    margin-left: 50px;
+}
+#randomColor {
+    margin-top: 14rem;
+    
+}
+#clean {
+    margin-top: 30px;
 }
