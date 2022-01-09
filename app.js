@@ -2,7 +2,9 @@ const grid = document.querySelector('#grid');
 const color = document.querySelector('#color');
 const cleanBtn = document.querySelector('#clean');
 const range = document.querySelector('#rangeValue')
-const output = document.querySelector('#displayRange')
+const output_1 = document.querySelector('#displayRange_1')
+const output_2 = document.querySelector('#displayRange_2')
+
 const eraser = document.getElementById('eraser')
 const randomColorBtn = document.getElementById('randomColor')
 
@@ -44,7 +46,9 @@ function createGridFunc(val){
 
 // for defaultValue and selected values
 function selectingValue(rangeVal){
-    output.innerHTML = rangeVal
+    output_1.innerHTML = rangeVal
+    output_2.innerHTML = rangeVal
+
     // equal column and row 
     grid.style.gridTemplateRows = `repeat(${rangeVal}, 1fr)`
     grid.style.gridTemplateColumns = `repeat(${rangeVal}, 1fr)`
