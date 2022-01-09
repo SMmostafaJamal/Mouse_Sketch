@@ -1,5 +1,7 @@
 body{
     text-align: center;
+    color: #E7FBBE;
+    background-color: #222831 ;
 }
 p {
     display:inline-block;
@@ -15,13 +17,13 @@ p {
     display: grid;
     height: 650px;
     max-width: 60vw;
-    border: 5px solid #0000ff;
+    border: 5px solid #FFD369;
 }
 
 .square{
     height: 100%;
     width: 100%;
-
+    background-color: #EEEEEE;
 }
 #rangeValue{
     width: 60vw;
@@ -44,6 +46,9 @@ p {
     position: absolute;
     margin-top: 20%;
     margin-left: 50px;
+    background-color: #DCD6F7;
+    color: #222831;
+    
 }
 #randomColor {
     margin-top: 14rem;
