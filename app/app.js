@@ -29,13 +29,13 @@ function createGridFunc(val){
         // To change the div/pixel colours-
         combine_of_clrTrail_eraser_randomClr(grid, div, color)
         // To erase colour trails-
-        combine_of_clrTrail_eraser_randomClr(eraser, div, 'white')
+        combine_of_clrTrail_eraser_randomClr(eraser, div, '#EEEEEE')
         // random colours-
         combine_of_clrTrail_eraser_randomClr(randomColorBtn, div, RGB)
         // for range 
-        combine_of_clrTrail_eraser_randomClr(range, div, 'white')
+        combine_of_clrTrail_eraser_randomClr(range, div, '#EEEEEE')
         // to clean grid
-        combine_of_clrTrail_eraser_randomClr(cleanBtn, div, 'white')
+        combine_of_clrTrail_eraser_randomClr(cleanBtn, div, '#EEEEEE')
 
         // color_erase_trail(div)
         // clean(range,div)
